@@ -6,13 +6,15 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Education from './components/Education'
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-900 text-white pt-16 scroll-smooth">
       <Navbar />
-      <Hero />
+      <Hero />  
       <About />
+      <Education />
       <Skills />
       <Projects />
       <Contact />

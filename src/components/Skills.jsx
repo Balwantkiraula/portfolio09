@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 
 const Skills = () => {
   const [visibleSkills, setVisibleSkills] = useState(new Set())
@@ -62,8 +63,18 @@ const Skills = () => {
     return () => observer.disconnect()
   }, [])
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.12 } }
+  }
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+  }
+
   return (
-    <section id="skills" className="py-20 bg-gray-900 relative overflow-hidden">
+    <motion.section id="skills" className="py-20 bg-gray-900 relative overflow-hidden scroll-mt-20" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={container}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div 
@@ -76,22 +87,25 @@ const Skills = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <motion.h2 className="text-4xl md:text-5xl font-bold mb-6" variants={fadeUp}>
             <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               Skills & Technologies
             </span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p className="text-xl text-gray-400 max-w-3xl mx-auto" variants={fadeUp}>
             Here are the technologies and tools I work with to bring ideas to life
-          </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mt-6"></div>
+          </motion.p>
+          <motion.div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mt-6" variants={fadeUp}></motion.div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {skillCategories.map((category, categoryIndex) => (
-            <div 
+            <motion.div 
               key={categoryIndex}
               className="group bg-gray-800 rounded-2xl p-8 hover:bg-gray-700 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl"
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={{ type: 'spring', stiffness: 250, damping: 20 }}
             >
               {/* Category Header */}
               <div className="text-center mb-8">
@@ -132,7 +146,7 @@ const Skills = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -155,7 +169,7 @@ const Skills = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 

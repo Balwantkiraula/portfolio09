@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -68,8 +69,18 @@ const Contact = () => {
     }
   ]
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.12 } }
+  }
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+  }
+
   return (
-    <section id="contact" className="py-20 bg-gray-900 relative overflow-hidden">
+    <motion.section id="contact" className="py-20 bg-gray-900 relative overflow-hidden scroll-mt-20" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={container}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div 
@@ -82,20 +93,20 @@ const Contact = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <motion.h2 className="text-4xl md:text-5xl font-bold mb-6" variants={fadeUp}>
             <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               Let's Work Together
             </span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p className="text-xl text-gray-400 max-w-3xl mx-auto" variants={fadeUp}>
             I'm always interested in new opportunities and exciting projects. Let's discuss how we can work together!
-          </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mt-6"></div>
+          </motion.p>
+          <motion.div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mt-6" variants={fadeUp}></motion.div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Information */}
-          <div className="space-y-8">
+          <motion.div className="space-y-8" variants={fadeUp}>
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">Get In Touch</h3>
               <p className="text-gray-300 mb-8 leading-relaxed">
@@ -144,10 +155,10 @@ const Contact = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form */}
-          <div className="bg-gray-800 rounded-2xl p-8">
+          <motion.div className="bg-gray-800 rounded-2xl p-8" variants={fadeUp}>
             <h3 className="text-2xl font-bold text-white mb-6">Send Me a Message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -217,10 +228,11 @@ const Contact = () => {
                 />
               </div>
 
-              <button
+              <motion.button
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                whileTap={{ scale: 0.98 }}
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center">
@@ -230,7 +242,7 @@ const Contact = () => {
                 ) : (
                   'Send Message'
                 )}
-              </button>
+              </motion.button>
 
               {submitStatus === 'success' && (
                 <div className="p-4 bg-green-600 text-white rounded-lg text-center">
@@ -238,11 +250,11 @@ const Contact = () => {
                 </div>
               )}
             </form>
-          </div>
+          </motion.div>
         </div>
 
       </div>
-    </section>
+    </motion.section>
   )
 }
 

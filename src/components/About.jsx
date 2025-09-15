@@ -1,46 +1,32 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
+import profileImage from '@assets/1757647829086.jpg'
+import resumePdf from '@assets/balwantresume.pdf'
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   const handleDownloadResume = () => {
-    // Create a simple resume content (in a real app, this would be a PDF)
-    const resumeContent = `
-John Doe - Full Stack Developer
-Email: john.doe@email.com
-Phone: +1 (555) 123-4567
-Location: San Francisco, CA
+    const link = document.createElement('a')
+    link.href = resumePdf
+    link.download = 'Balwant_Kiraula_Resume.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
 
-EXPERIENCE:
-- 5+ years of full-stack development
-- React, Node.js, Python expertise
-- UI/UX design experience
-- Agile/Scrum methodology
+  const container = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.12 } }
+  }
 
-EDUCATION:
-- Computer Science Degree
-- Various certifications in web technologies
-
-SKILLS:
-- Frontend: React, Vue.js, TypeScript, Tailwind CSS
-- Backend: Node.js, Python, Express.js
-- Databases: MongoDB, PostgreSQL
-- Tools: Git, Docker, AWS, Figma
-    `
-    
-    const blob = new Blob([resumeContent], { type: 'text/plain' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = 'John_Doe_Resume.txt'
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-    URL.revokeObjectURL(url)
+  const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
   }
 
   return (
-    <section id="about" className="py-20 bg-gray-800 relative overflow-hidden">
+    <motion.section id="about" className="py-20 bg-gray-800 relative overflow-hidden scroll-mt-20" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={container}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div 
@@ -53,18 +39,18 @@ SKILLS:
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <motion.h2 className="text-4xl md:text-5xl font-bold mb-6" variants={fadeUp}>
             <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               About Me
             </span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+          </motion.h2>
+          <motion.div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" variants={fadeUp}></motion.div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Left Column - Text Content */}
-          <div className="space-y-8">
-            <div className="space-y-6">
+          <motion.div className="space-y-8" variants={container}>
+            <motion.div className="space-y-6" variants={fadeUp}>
               <h3 className="text-3xl font-bold text-white">
                 Hello! I'm <span className="text-blue-400">Balwant Kiraula</span>
               </h3>
@@ -80,79 +66,78 @@ SKILLS:
                 development. I love building responsive web applications and turning design 
                 concepts into interactive user interfaces that users love.
               </p>
-            </div>
+            </motion.div>
 
             {/* Personality Traits */}
-            <div className="space-y-4">
+            <motion.div className="space-y-4" variants={fadeUp}>
               <h4 className="text-xl font-semibold text-white">What drives me:</h4>
               <div className="flex flex-wrap gap-3">
                 {['Problem Solver', 'Team Player', 'Continuous Learner', 'Detail Oriented', 'Creative Thinker'].map((trait, index) => (
-                  <span 
+                  <motion.span 
                     key={index}
-                    className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-sm font-medium text-white hover:scale-105 transition-transform duration-200"
+                    className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-sm font-medium text-white"
+                    whileHover={{ scale: 1.06 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                   >
                     {trait}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Resume Download Button */}
-            <div className="pt-4">
-              <button
+            <motion.div className="pt-4" variants={fadeUp}>
+              <motion.button
                 onClick={handleDownloadResume}
-                className="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                className="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-blue-600 text-white font-semibold rounded-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
               >
-                <svg className="w-5 h-5 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
                 Download Resume
-              </button>
-            </div>
-          </div>
+              </motion.button>
+            </motion.div>
+          </motion.div>
 
           {/* Right Column - Image and Stats */}
-          <div className="space-y-8">
+          <motion.div className="space-y-8" variants={container}>
             {/* Profile Image */}
-            <div className="relative">
+            <motion.div className="relative" variants={fadeUp}>
               <div className="w-80 h-80 mx-auto rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="/src/assets/1757647829086.jpg" 
+                  src={profileImage} 
                   alt="Balwant Kiraula" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center text-2xl animate-pulse">
+              <motion.div className="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center text-2xl" animate={{ y: [0, -6, 0] }} transition={{ repeat: Infinity, duration: 3 }}>
                 💻
-              </div>
-              <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-green-400 rounded-full flex items-center justify-center text-xl animate-pulse delay-1000">
+              </motion.div>
+              <motion.div className="absolute -bottom-4 -left-4 w-20 h-20 bg-green-400 rounded-full flex items-center justify-center text-xl" animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 3, delay: 0.5 }}>
                 ⚡
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-gray-700 rounded-xl p-6 text-center hover:bg-gray-600 transition-colors duration-300">
-                <div className="text-3xl font-bold text-blue-400 mb-2">Fresher</div>
-                <div className="text-gray-300">Experience Level</div>
-              </div>
-              <div className="bg-gray-700 rounded-xl p-6 text-center hover:bg-gray-600 transition-colors duration-300">
-                <div className="text-3xl font-bold text-purple-400 mb-2">5+</div>
-                <div className="text-gray-300">Projects Completed</div>
-              </div>
-              <div className="bg-gray-700 rounded-xl p-6 text-center hover:bg-gray-600 transition-colors duration-300">
-                <div className="text-3xl font-bold text-green-400 mb-2">React</div>
-                <div className="text-gray-300">Specialization</div>
-              </div>
-              <div className="bg-gray-700 rounded-xl p-6 text-center hover:bg-gray-600 transition-colors duration-300">
-                <div className="text-3xl font-bold text-yellow-400 mb-2">Eager</div>
-                <div className="text-gray-300">To Learn</div>
-              </div>
-            </div>
-          </div>
+            <motion.div className="grid grid-cols-2 gap-6" variants={container}>
+              {[
+                { value: 'Fresher', label: 'Experience Level', color: 'text-blue-400' },
+                { value: '5+', label: 'Projects Completed', color: 'text-purple-400' },
+                { value: 'React', label: 'Specialization', color: 'text-green-400' },
+                { value: 'Eager', label: 'To Learn', color: 'text-yellow-400' }
+              ].map((stat, i) => (
+                <motion.div key={i} className="bg-gray-700 rounded-xl p-6 text-center" variants={fadeUp} whileHover={{ scale: 1.03 }}>
+                  <div className={`text-3xl font-bold ${stat.color} mb-2`}>{stat.value}</div>
+                  <div className="text-gray-300">{stat.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 
