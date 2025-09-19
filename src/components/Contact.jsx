@@ -58,8 +58,8 @@ const Contact = () => {
     {
       icon: '📱',
       title: 'Phone',
-      value: '+91 (XXX) XXX-XXXX',
-      link: 'tel:+91XXXXXXXXXX'
+      value: '+91 7618135309',
+      link: 'tel:+917618135309'
     },
     {
       icon: '📍',

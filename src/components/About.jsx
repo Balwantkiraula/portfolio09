@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import profileImage from '@assets/1757647829086.jpg'
-import resumePdf from '@assets/balwantresume.pdf'
+import resumePdf from '@assets/balwant resume.pdf'
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false)
