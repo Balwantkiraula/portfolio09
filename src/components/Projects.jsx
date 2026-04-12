@@ -19,51 +19,51 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: 'Voice Interaction Web App',
-      description: 'A React-based application that converts text into speech and transcribes user speech into text using the Web Speech API.',
-      longDescription: 'Developed a React-based application that converts text into speech and transcribes user speech into text using the Web Speech API. Enhanced user experience with Tailwind CSS styling as part of an LMS project.',
-      image: '🎤',
+      title: 'AI Chatbot',
+      description: 'A conversational chat interface with a polished frontend, deployed for real-time interaction and demos.',
+      longDescription: 'Frontend chat experience hosted on Render, built for responsive UX and easy sharing with recruiters and users.',
+      image: '💬',
       screenshot: '/api/placeholder/400/250',
-      tech: ['React', 'Web Speech API', 'Tailwind CSS', 'JavaScript', 'TTS', 'STT'],
+      tech: ['React', 'Frontend', 'API Integration', 'Responsive UI', 'Render'],
       github: '',
-      live: '',
+      live: 'https://chatbot-frontend1-jajq.onrender.com/',
       featured: true
     },
     {
       id: 3,
-      title: 'AI Tutor App',
-      description: 'AI Tutor App – use OpenAI API for interactive learning.',
-      longDescription: 'Developed an AI-powered tutoring application that leverages OpenAI API to provide interactive learning experiences. The app offers personalized educational content and intelligent responses to enhance student learning outcomes.',
-      image: '🤖',
+      title: 'Analytics Dashboard',
+      description: 'An interactive dashboard for monitoring metrics and activity with a clean, data-focused layout.',
+      longDescription: 'Dashboard experience deployed on Vercel, emphasizing clarity, navigation, and a production-style app shell.',
+      image: '📊',
       screenshot: '/api/placeholder/400/250',
-      tech: ['React', 'OpenAI API', 'JavaScript', 'AI/ML', 'Interactive Learning', 'Educational Technology'],
+      tech: ['React', 'Dashboard', 'Vercel', 'Data UI', 'Responsive Design'],
       github: '',
-      live: '',
-      featured: false
+      live: 'https://dashboard-is48teogz-balwantkiraulas-projects.vercel.app/',
+      featured: true
     },
     {
       id: 4,
-      title: 'Expense Tracker',
-      description: 'A comprehensive expense tracking application to manage personal finances with detailed analytics and categorization.',
-      longDescription: 'Built a full-featured expense tracker application that helps users monitor their spending habits. Features include expense categorization, budget tracking, visual analytics, and data export capabilities for better financial management.',
-      image: '💰',
+      title: 'Task Management',
+      description: 'A task management app for organizing work—lists, status, and flows in a focused interface.',
+      longDescription: 'Full app experience on Vercel, suitable for showcasing CRUD-style workflows and modern frontend patterns.',
+      image: '✅',
       screenshot: '/api/placeholder/400/250',
-      tech: ['React', 'JavaScript', 'CSS3', 'Local Storage', 'Chart.js', 'Responsive Design'],
+      tech: ['React', 'JavaScript', 'Vercel', 'SPA', 'UX'],
       github: '',
-      live: '',
-      featured: false
+      live: 'https://task-managment-fkbtprpkp-balwantkiraulas-projects.vercel.app/',
+      featured: true
     },
     {
       id: 5,
-      title: 'Portfolio Website',
-      description: 'A modern, responsive portfolio website showcasing projects, skills, and professional experience.',
-      longDescription: 'Designed and developed a personal portfolio website using React and Tailwind CSS. Features include responsive design, smooth animations, project showcase, contact form, and modern UI/UX design principles.',
-      image: '💼',
+      title: 'FlowPilot — SaaS Landing',
+      description: 'A mobile-first SaaS marketing page: hero, features, pricing, and testimonials with a cohesive design system.',
+      longDescription: 'Marketing landing built with Next.js App Router and Tailwind—fast, responsive, and structured like a real product launch.',
+      image: '🚀',
       screenshot: '/api/placeholder/400/250',
-      tech: ['React', 'Tailwind CSS', 'JavaScript', 'Responsive Design', 'Vite', 'Modern UI/UX'],
+      tech: ['Next.js', 'Tailwind CSS', 'App Router', 'Vercel', 'SaaS UI'],
       github: '',
-      live: '',
-      featured: false
+      live: 'https://landingpage-gamma-nine-76.vercel.app/',
+      featured: true
     }
   ]
 
@@ -216,83 +216,85 @@ const Projects = () => {
         </div>
 
         {/* Other Projects */}
-        <div className="mb-8">
-          <motion.h3 className="text-3xl font-bold text-center text-white mb-12" variants={fadeUp}>Other Projects</motion.h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {otherProjects.map((project, index) => (
-              <motion.div 
-                key={project.id}
-                className="group bg-gray-700 rounded-xl overflow-hidden hover:bg-gray-600"
-                variants={fadeUp}
-                whileHover={{ y: -3, scale: 1.015 }}
-                transition={{ type: 'spring', stiffness: 250, damping: 20 }}
-              >
-                <div className="h-32 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                  <div className="text-4xl group-hover:scale-110 transition-transform duration-300">
-                    {project.image}
+        {otherProjects.length > 0 && (
+          <div className="mb-8">
+            <motion.h3 className="text-3xl font-bold text-center text-white mb-12" variants={fadeUp}>Other Projects</motion.h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              {otherProjects.map((project, index) => (
+                <motion.div 
+                  key={project.id}
+                  className="group bg-gray-700 rounded-xl overflow-hidden hover:bg-gray-600"
+                  variants={fadeUp}
+                  whileHover={{ y: -3, scale: 1.015 }}
+                  transition={{ type: 'spring', stiffness: 250, damping: 20 }}
+                >
+                  <div className="h-32 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                    <div className="text-4xl group-hover:scale-110 transition-transform duration-300">
+                      {project.image}
+                    </div>
                   </div>
-                </div>
-                
-                <div className="p-4">
-                  <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                    {project.title}
-                  </h4>
-                  <p className="text-gray-400 text-sm mb-3 line-clamp-2">
-                    {project.description}
-                  </p>
                   
-                  <div className="flex flex-wrap gap-1 mb-3">
-                    {project.tech.slice(0, 3).map((tech, index) => (
-                      <motion.span 
-                        key={index}
-                        className="px-2 py-1 bg-gray-600 text-gray-300 rounded text-xs"
-                        whileHover={{ scale: 1.06 }}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                    {project.tech.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-600 text-gray-300 rounded text-xs">
-                        +{project.tech.length - 3}
-                      </span>
-                    )}
-                  </div>
-
-                  {(project.github || project.live) && (
-                    <div className="flex space-x-2">
-                      {project.github && (
-                        <motion.a 
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-white transition-colors"
-                          whileTap={{ scale: 0.96 }}
+                  <div className="p-4">
+                    <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                      {project.title}
+                    </h4>
+                    <p className="text-gray-400 text-sm mb-3 line-clamp-2">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      {project.tech.slice(0, 3).map((tech, index) => (
+                        <motion.span 
+                          key={index}
+                          className="px-2 py-1 bg-gray-600 text-gray-300 rounded text-xs"
+                          whileHover={{ scale: 1.06 }}
                         >
-                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                          </svg>
-                        </motion.a>
-                      )}
-                      {project.live && (
-                        <motion.a 
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-white transition-colors"
-                          whileTap={{ scale: 0.96 }}
-                        >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </motion.a>
+                          {tech}
+                        </motion.span>
+                      ))}
+                      {project.tech.length > 3 && (
+                        <span className="px-2 py-1 bg-gray-600 text-gray-300 rounded text-xs">
+                          +{project.tech.length - 3}
+                        </span>
                       )}
                     </div>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+
+                    {(project.github || project.live) && (
+                      <div className="flex space-x-2">
+                        {project.github && (
+                          <motion.a 
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-white transition-colors"
+                            whileTap={{ scale: 0.96 }}
+                          >
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                          </motion.a>
+                        )}
+                        {project.live && (
+                          <motion.a 
+                            href={project.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-white transition-colors"
+                            whileTap={{ scale: 0.96 }}
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </motion.a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </motion.section>
   )

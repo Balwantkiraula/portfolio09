@@ -54,6 +54,7 @@ const Navbar = () => {
 
   return (
     <motion.nav
+      aria-label="Primary navigation"
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -89,7 +90,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.25 }}
             >
-              Portfolio
+              Balwant Kiraula
             </motion.span>
           </motion.div>
 
@@ -99,7 +100,9 @@ const Navbar = () => {
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.id}
+                  type="button"
                   onClick={() => scrollToSection(item.id)}
+                  aria-current={activeSection === item.id ? 'true' : undefined}
                   className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-blue-400 ${
                     activeSection === item.id
                       ? 'text-blue-400'
@@ -127,10 +130,13 @@ const Navbar = () => {
           {/* Mobile menu button */}
           <div className="md:hidden">
             <motion.button 
-              className="text-gray-300 hover:text-white focus:outline-none"
+              type="button"
+              className="text-gray-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-md"
               whileTap={{ scale: 0.9 }}
               whileHover={{ rotate: 3 }}
-              aria-label="Toggle menu"
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-nav-panel"
               onClick={() => setMobileOpen(prev => !prev)}
             >
               {mobileOpen ? (
@@ -148,12 +154,14 @@ const Navbar = () => {
       </div>
       {/* Mobile menu panel */}
       {mobileOpen && (
-        <div className="md:hidden bg-gray-900/95 border-t border-gray-800">
+        <div id="mobile-nav-panel" className="md:hidden bg-gray-900/95 border-t border-gray-800" role="region" aria-label="Mobile sections">
           <div className="px-4 py-3 space-y-1">
             {navItems.map(item => (
               <button
                 key={item.id}
+                type="button"
                 onClick={() => scrollToSection(item.id)}
+                aria-current={activeSection === item.id ? 'true' : undefined}
                 className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   activeSection === item.id ? 'text-blue-400 bg-gray-800' : 'text-gray-300 hover:text-white hover:bg-gray-800'
                 }`}

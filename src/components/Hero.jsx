@@ -63,13 +63,14 @@ const Hero = () => {
   return (
     <motion.section
       id="home"
+      aria-labelledby="hero-heading"
       className="min-h-screen flex items-center justify-center relative overflow-hidden scroll-mt-20"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900" aria-hidden="true">
         <div 
           className="absolute inset-0 opacity-20"
           style={{
@@ -79,9 +80,9 @@ const Hero = () => {
       </div>
 
       {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/20 rounded-full blur-xl animate-pulse"></div>
-      <div className="absolute top-40 right-20 w-32 h-32 bg-purple-500/20 rounded-full blur-xl animate-pulse delay-1000"></div>
-      <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-cyan-500/20 rounded-full blur-xl animate-pulse delay-2000"></div>
+      <div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/20 rounded-full blur-xl animate-pulse" aria-hidden="true"></div>
+      <div className="absolute top-40 right-20 w-32 h-32 bg-purple-500/20 rounded-full blur-xl animate-pulse delay-1000" aria-hidden="true"></div>
+      <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-cyan-500/20 rounded-full blur-xl animate-pulse delay-2000" aria-hidden="true"></div>
 
       <motion.div 
         className="relative z-10 text-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -98,7 +99,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Main Heading */}
-        <motion.h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6" variants={itemVariants}>
+        <motion.h1 id="hero-heading" className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6" variants={itemVariants}>
           <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
             Balwant Kiraula
           </span>
@@ -106,13 +107,18 @@ const Hero = () => {
 
         {/* Animated Role Text */}
         <motion.div className="h-16 flex items-center justify-center mb-8" variants={itemVariants}>
-          <span className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300">
-            I'm a{' '}
-            <span className="text-blue-400 font-bold min-h-[2rem] inline-block">
-              {displayText}
-              <span className="animate-pulse">|</span>
+          <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300">
+            <span aria-hidden="true">
+              I'm a{' '}
+              <span className="text-blue-400 font-bold min-h-[2rem] inline-block">
+                {displayText}
+                <span className="animate-pulse">|</span>
+              </span>
             </span>
-          </span>
+            <span className="sr-only">
+              Roles include Frontend Developer, React Developer, UI Developer, Problem Solver, and Tech Enthusiast.
+            </span>
+          </p>
         </motion.div>
 
         {/* Description */}
@@ -127,8 +133,9 @@ const Hero = () => {
         {/* CTA Buttons */}
         <motion.div className="flex flex-col sm:flex-row gap-6 justify-center items-center" variants={itemVariants}>
           <motion.button 
+            type="button"
             onClick={() => scrollToSection('projects')}
-            className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-semibold text-white"
+            className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -137,8 +144,9 @@ const Hero = () => {
           </motion.button>
           
           <motion.button 
+            type="button"
             onClick={() => scrollToSection('contact')}
-            className="group px-8 py-4 border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white rounded-lg font-semibold"
+            className="group px-8 py-4 border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white rounded-lg font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -148,8 +156,10 @@ const Hero = () => {
 
         {/* Scroll Indicator */}
         <motion.button 
+          type="button"
           onClick={() => scrollToSection('about')}
-          className="mx-auto mt-16 flex items-center gap-2 text-gray-300 hover:text-white"
+          aria-label="Scroll to About section"
+          className="mx-auto mt-16 flex items-center gap-2 text-gray-300 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 rounded-full px-2 py-1"
           variants={itemVariants}
           whileHover={{ y: 2 }}
           whileTap={{ scale: 0.98 }}

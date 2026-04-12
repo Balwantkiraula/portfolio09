@@ -30,6 +30,17 @@ const Skills = () => {
       ]
     },
     {
+      title: 'Backend Development',
+      color: 'from-orange-500 to-amber-500',
+      icon: '🧩',
+      skills: [
+        { name: 'Node.js', level: 90, icon: '⬢' },
+        { name: 'Express', level: 88, icon: '🚂' },
+        { name: 'MongoDB', level: 85, icon: '🍃' },
+        { name: 'Next.js', level: 87, icon: '⏭️' }
+      ]
+    },
+    {
       title: 'Tools & Others',
       color: 'from-green-500 to-teal-500',
       icon: '🛠️',
