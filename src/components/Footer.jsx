@@ -1,3 +1,5 @@
+import { FaHeart } from 'react-icons/fa'
+
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
@@ -38,13 +40,13 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-gray-800 border-t border-gray-700 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5" aria-hidden="true">
+    <footer className="bg-[#0c2340] border-t border-slate-800 text-white relative overflow-hidden">
+      {/* Background Subtle Mesh grid */}
+      <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
         <div 
           className="absolute inset-0" 
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm-20-18c9.941 0 18 8.059 18 18s-8.059 18-18 18-18-8.059-18-18 8.059-18 18-18z'/%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm-20-18c9.941 0 18 8.059 18 18s-8.059 18-18 18-18-8.059-18-18 8.059-18 18-18z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
         ></div>
       </div>
@@ -53,24 +55,24 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="py-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">BK</span>
+          <div className="lg:col-span-2 space-y-6">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-md">
+                <span className="text-white font-extrabold text-lg">BK</span>
               </div>
-              <span className="text-2xl font-bold text-white">Balwant Kiraula</span>
+              <span className="text-2xl font-extrabold text-white tracking-tight">Balwant Kiraula</span>
             </div>
-            <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
-              Frontend Developer passionate about creating beautiful, functional, and user-centered digital experiences.
+            <p className="text-slate-300 max-w-md leading-relaxed font-medium">
+              Frontend Developer passionate about engineering exceptionally beautiful, functional, and user-centered digital systems.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-600 transition-all duration-300 hover:transform hover:scale-110"
+                  className="w-10 h-10 bg-slate-800 hover:bg-purple-650 rounded-xl flex items-center justify-center text-slate-300 hover:text-white transition-all duration-300 hover:scale-110 border border-slate-700/40"
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -81,14 +83,14 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+            <h3 className="text-lg font-bold text-white mb-4 tracking-tight">Quick Links</h3>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <button
                     type="button"
                     onClick={() => scrollToSection(link.href)}
-                    className="text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-1 transform focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 rounded-sm"
+                    className="text-slate-300 hover:text-white transition-all font-semibold hover:translate-x-1 duration-250 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 rounded-sm"
                   >
                     {link.name}
                   </button>
@@ -99,46 +101,46 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Contact Info</h3>
-            <div className="space-y-3">
+            <h3 className="text-lg font-bold text-white mb-4 tracking-tight">Contact Info</h3>
+            <div className="space-y-3 font-medium">
               <div className="flex items-center space-x-3">
-                <svg className="w-4 h-4 shrink-0 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-4 h-4 shrink-0 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:balwantkiraula123@gmail.com" className="text-gray-400 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 rounded-sm">
+                <a href="mailto:balwantkiraula123@gmail.com" className="text-slate-300 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 rounded-sm">
                   balwantkiraula123@gmail.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <svg className="w-4 h-4 shrink-0 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-4 h-4 shrink-0 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a href="tel:+917618135309" className="text-gray-400 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 rounded-sm">
+                <a href="tel:+917618135309" className="text-slate-300 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 rounded-sm">
                   +91 7618135309
                 </a>
               </div>
-              <div className="flex items-center space-x-3">
-                <svg className="w-4 h-4 shrink-0 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <div className="flex items-center space-x-3 text-slate-300">
+                <svg className="w-4 h-4 shrink-0 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span className="text-gray-400">Location: India</span>
+                <span>India</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-gray-700">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-center md:text-left">
-              © {currentYear} Balwant Kiraula. All rights reserved. Built with React and Tailwind CSS.
+        <div className="py-6 border-t border-slate-800/80">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-slate-400 font-semibold text-sm">
+            <div className="text-center md:text-left">
+              © {currentYear} Balwant Kiraula. All rights reserved.
             </div>
             
-            <div className="flex items-center space-x-6 text-sm text-gray-400">
-              <span>Made with ❤️</span>
+            <div className="flex items-center space-x-6">
+              <span>Made with <FaHeart className="inline text-red-500 mx-1" /></span>
               <span>•</span>
-              <span>Last updated: {new Date().toLocaleDateString()}</span>
+              <span>Built with React & Tailwind CSS</span>
             </div>
           </div>
         </div>

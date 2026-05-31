@@ -6,7 +6,8 @@ import profileImage from '../assets/1757647829086.jpg'
 
 const TEXTS = [
   'Frontend Developer',
-  'React Developer',
+  'React Js Developer',
+  'Next Js Developer',
   'UI Developer',
   'Problem Solver',
   'Tech Enthusiast'
@@ -69,28 +70,18 @@ const Hero = () => {
       animate="visible"
       variants={containerVariants}
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900" aria-hidden="true">
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        ></div>
-      </div>
-
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/20 rounded-full blur-xl animate-pulse" aria-hidden="true"></div>
-      <div className="absolute top-40 right-20 w-32 h-32 bg-purple-500/20 rounded-full blur-xl animate-pulse delay-1000" aria-hidden="true"></div>
-      <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-cyan-500/20 rounded-full blur-xl animate-pulse delay-2000" aria-hidden="true"></div>
+      {/* Dynamic Ambient Blur Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-[#ffddcf]/40 rounded-full blur-3xl animate-pulse" aria-hidden="true"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-[#e8dbff]/40 rounded-full blur-3xl animate-pulse delay-1000" aria-hidden="true"></div>
+      <div className="absolute bottom-20 left-1/4 w-36 h-36 bg-[#cff5fc]/50 rounded-full blur-3xl animate-pulse delay-2000" aria-hidden="true"></div>
 
       <motion.div 
         className="relative z-10 text-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
         variants={containerVariants}
       >
-        {/* Profile Image */}
+        {/* Profile Image with Sleek Shadow */}
         <motion.div 
-          className="w-40 h-40 mx-auto mb-8 rounded-full overflow-hidden shadow-2xl"
+          className="w-40 h-40 mx-auto mb-8 rounded-full overflow-hidden shadow-xl border-4 border-white/80"
           variants={itemVariants}
           whileHover={{ scale: 1.05, rotate: 2 }}
           transition={{ type: 'spring', stiffness: 250, damping: 18 }}
@@ -99,20 +90,20 @@ const Hero = () => {
         </motion.div>
 
         {/* Main Heading */}
-        <motion.h1 id="hero-heading" className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6" variants={itemVariants}>
-          <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+        <motion.h1 id="hero-heading" className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tight text-slate-900" variants={itemVariants}>
+          <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 bg-clip-text text-transparent">
             Balwant Kiraula
           </span>
         </motion.h1>
 
         {/* Animated Role Text */}
         <motion.div className="h-16 flex items-center justify-center mb-8" variants={itemVariants}>
-          <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300">
+          <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-slate-700">
             <span aria-hidden="true">
               I'm a{' '}
-              <span className="text-blue-400 font-bold min-h-[2rem] inline-block">
+              <span className="bg-gradient-to-r from-purple-600 to-cyan-500 bg-clip-text text-transparent font-extrabold min-h-[2rem] inline-block">
                 {displayText}
-                <span className="animate-pulse">|</span>
+                <span className="text-purple-600 animate-pulse">|</span>
               </span>
             </span>
             <span className="sr-only">
@@ -123,7 +114,7 @@ const Hero = () => {
 
         {/* Description */}
         <motion.p 
-          className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="text-lg md:text-xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed font-medium"
           variants={itemVariants}
         >
           Passionate about creating beautiful, functional, and user-centered digital experiences. 
@@ -135,44 +126,29 @@ const Hero = () => {
           <motion.button 
             type="button"
             onClick={() => scrollToSection('projects')}
-            className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            whileHover={{ scale: 1.05 }}
+            className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-full font-bold text-white shadow-md hover:shadow-purple-500/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+            whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.97 }}
           >
-            <span className="relative z-10">View My Work</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
+            <span className="relative z-10 flex items-center gap-2">
+              View My Work
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
           </motion.button>
           
           <motion.button 
             type="button"
             onClick={() => scrollToSection('contact')}
-            className="group px-8 py-4 border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white rounded-lg font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
-            whileHover={{ scale: 1.05 }}
+            className="btn-gradient-border px-8 py-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             whileTap={{ scale: 0.97 }}
           >
-            Get In Touch
+            <span className="flex items-center gap-2 text-slate-800 font-bold">
+              Get In Touch
+            </span>
           </motion.button>
         </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.button 
-          type="button"
-          onClick={() => scrollToSection('about')}
-          aria-label="Scroll to About section"
-          className="mx-auto mt-16 flex items-center gap-2 text-gray-300 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 rounded-full px-2 py-1"
-          variants={itemVariants}
-          whileHover={{ y: 2 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <span className="text-sm tracking-wider">Scroll</span>
-          <span className="relative inline-flex h-10 w-6 items-start justify-center rounded-full border border-gray-600/70">
-            <motion.span 
-              className="mt-1 h-2 w-1.5 rounded-full bg-gray-400"
-              animate={{ y: [0, 14, 0], opacity: [1, 0.6, 1] }}
-              transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-            />
-          </span>
-        </motion.button>
       </motion.div>
     </motion.section>
   )
